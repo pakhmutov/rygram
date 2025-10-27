@@ -1,7 +1,7 @@
 import { Telegraf, Context } from 'telegraf';
 import { Update, Message } from 'telegraf/typings/core/types/typegram';
 import express, { Express } from 'express';
-import { Message as DBMessage, connectDB, saveToDB } from '@/db';
+import { Message as DBMessage, connectDB, saveToDB } from './db';
 import * as dotenv from 'dotenv';
 
 // Кастомный тип для бизнес-сообщений
