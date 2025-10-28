@@ -112,9 +112,12 @@ bot.on('delete_chat_message' as any, async (ctx: Context<Update>) => {
 app.use(bot.webhookCallback('/secret'))
 app.get('/', (_, res) => res.send('Bot alive'))
 bot.telegram
-  .setWebhook(`https://${process.env.RENDER_EXTERNAL_HOSTNAME}/secret`)
+  .setWebhook(`https://${process.env.RENDER_EXTERNAL_HOSTNAME}/secret`, {
+    //@ts-ignore
+    allowed_updates: ['message', 'business_message', 'delete_chat_message'],
+  })
   .then(() => {
-    console.log('Webhook set')
+    console.log('WEBHOOK SET WITH delete_chat_message')
   })
 
 bot.catch((err: unknown, ctx: Context<Update>) => {
