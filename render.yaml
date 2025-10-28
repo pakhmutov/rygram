@@ -1,0 +1,23 @@
+# Exported from Render on 2025-10-28T00:40:51Z
+version: '1'
+projects:
+  - name: My project
+    environments:
+      - name: Production
+        services:
+          - type: web
+            name: rygram
+            runtime: node
+            repo: https://github.com/pakhmutov/rygram
+            plan: free
+            envVars:
+              - key: RENDER_EXTERNAL_HOSTNAME
+                sync: false
+              - key: MONGODB_URI
+                sync: false
+              - key: BOT_TOKEN
+                sync: false
+            region: oregon
+            buildCommand: pnpm install && pnpm build
+            startCommand: pnpm start
+            autoDeployTrigger: commit
